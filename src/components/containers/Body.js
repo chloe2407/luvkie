@@ -23,7 +23,7 @@ class Body extends Component {
                 <Route path="/wish" exact component={Wishlist}/>
                 <Route path="/basket" exact component={Basket}/>
                 <Route path="/care" exact component={CustomerCare}/>
-                <Route component={ErrorPage}/>
+                {/* <Route component={ErrorPage}/> */}
             </Switch>
         </div>
       
