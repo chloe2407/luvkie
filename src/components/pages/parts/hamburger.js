@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer() {
+ const Hamburger = () => {
   const classes = useStyles();
   const loc = {
     'Shop': '/',
@@ -89,13 +89,14 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div>
-        <React.Fragment key={'left'}>
-          <Button onClick={toggleDrawer('left', true)}><MenuIcon/></Button>
-          <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)}>
-            {list('left')}
-          </Drawer>
-        </React.Fragment>
-    </div>
+    <React.Fragment key={'left'}>
+      <Button onClick={toggleDrawer('left', true)}><MenuIcon/></Button>
+      <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)}>
+          {list('left')}
+        </Drawer>
+      </React.Fragment>
+    
   );
 }
+
+export default Hamburger

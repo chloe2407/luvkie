@@ -1,16 +1,23 @@
 import React from 'react'
-import Carousel from "../pages/parts/Carousel.js";
-
+import MyCarousel from "../pages/parts/Carousel.js";
 import data from "../../data/homepage.js";
+import { makeStyles } from "@material-ui/core/styles";
 
-const HomePage = props => {
+
+const useStyles = makeStyles ({
+  root: {
+
+  }
+});
+
+const HomePage = () => {
+    const classes = useStyles();
     return (
         <div>
-
-            <Carousel {...data}/>
+            <MyCarousel {...data}/>
             {/* testimonial here */}
         </div>
     )
 }
 
-export default HomePage
+export default HomePage;

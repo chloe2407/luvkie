@@ -1,14 +1,20 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Carousel from "../pages/parts/Carousel.js";
 
-
+import MyCarousel from "../pages/parts/Carousel.js";
 import data from "../../data/new.js";
 
-const New = props => {
+const useStyles = makeStyles ({
+  root: {
+    
+  }
+});
+
+const New = () => {
+    const classes = useStyles();
     return(
         <div>
-            <Carousel {...data}/>
+            <MyCarousel {...data}/>
         </div>
     );
 };

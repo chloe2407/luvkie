@@ -108,4 +108,4 @@ const CustomCard = props => {
   );
 }
 
-export default CustomCard
+export default CustomCard;

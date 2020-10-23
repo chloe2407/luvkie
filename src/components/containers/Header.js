@@ -1,24 +1,24 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 import Nav from "../pages/parts/navbar.js";
 
 
-const styles = theme => ({
-  
+const useStyles = makeStyles ({
+  root: {
+
+  }
 })
 
-class Header extends Component {
-  render() {
-    const classes = this.props.classes;
+const Header = () => {
+    const classes = useStyles();
     return (
       <div>
           <Nav/>
 
       </div>
     );
-  }
 }
 
 
-export default withStyles(styles)(Header);
+export default Header

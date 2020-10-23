@@ -1,25 +1,25 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
 import Divider from '@material-ui/core/Divider';
-import { Typography } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 
 
-const styles = theme => ({
-  
+const useStyles = makeStyles => ({
+  root: {
+    maxHeight: "4vh"
+  }
 });
 
-const Footer = props => {
+const Footer = () => {
+  const classes = useStyles();
   return (
-    <div style={{maxHeight: "4vh"}}>
+    <div className={classes.root}>
         <Divider />
-   
-            <Typography>About Us</Typography>
-            <Typography>Contact Us</Typography>
-            <Typography>Returns + Exchanges</Typography>
-            <Typography>Shipping</Typography>
-
+        <Typography>About Us</Typography>
+        <Typography>Contact Us</Typography>
+        <Typography>Returns + Exchanges</Typography>
+        <Typography>Shipping</Typography>
     </div>
   );
 };
 
-export default withStyles(styles)(Footer);
+export default Footer;
