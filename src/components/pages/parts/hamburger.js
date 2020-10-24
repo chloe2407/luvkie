@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 import MenuIcon from '@material-ui/icons/Menu';
@@ -26,16 +26,44 @@ const useStyles = makeStyles({
   },
 });
 
- const Hamburger = () => {
+ const Hamburger = props => {
   const classes = useStyles();
-  const loc = {
-    'Shop': '/',
-    'New Arrivals': '/new',
-    'Review': '/review',
-    'Wish': '/wish',
-    'Basket': '/basket',
-    'Customer Care': '/care'
-  }
+  const { history } = props;
+  const itemsList1 = [
+    {
+      text: "Shop",
+      icon: <InboxIcon/>,
+      onClick: () => history.push("/")
+    },
+    {
+      text: "New Arrivals",
+      icon: <InboxIcon/>,
+      onClick: () => history.push("/new")
+    },
+    {
+      text: "Reviews",
+      icon: <InboxIcon/>,
+      onClick: () => history.push("/review")
+    },
+  ]
+  const itemsList2 = [
+    {
+      text: "Wishlist",
+      icon: <InboxIcon/>,
+      onClick: () => history.push("/wish")
+    },
+    {
+      text: "Basket",
+      icon: <InboxIcon/>,
+      onClick: () => history.push("/basket")
+    },
+    {
+      text: "Customer Care",
+      icon: <InboxIcon/>,
+      onClick: () => history.push("/care")
+    },
+  ]
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -63,27 +91,29 @@ const useStyles = makeStyles({
       <div style={{padding: "2vw"}}/>
       <Divider />
       <List>
-        {['Shop', 'New Arrivals', 'Review'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+        {itemsList1.map((item, index) => {
+          const {text, icon, onClick} = item;
+          return(
+            <ListItem button key={text} onClick={onClick}>
+              {icon && <ListItemIcon>{icon}</ListItemIcon>}
+              <ListItemText primary={text}/>
+            </ListItem>
+          )
+        })}
 
-            {/* <Link to={loc[text]}> */}
-              <ListItemText primary={text} />
-            {/* </Link> */}
-            
-          </ListItem>
-        ))}
+    
       </List>
       <Divider />
       <List>
-        {['Wishlist', 'Basket', 'Customer Care'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            {/* <Link to={loc[text]}> */}
-              <ListItemText primary={text} />
-            {/* </Link> */}
-          </ListItem>
-        ))}
+        {itemsList2.map((item, index) => {
+          const {text, icon, onClick} = item;
+          return(
+            <ListItem button key={text} onClick={onClick}>
+              {icon && <ListItemIcon>{icon}</ListItemIcon>}
+              <ListItemText primary={text}/>
+            </ListItem>
+          )
+        })}
       </List>
     </div>
   );
@@ -99,4 +129,4 @@ const useStyles = makeStyles({
   );
 }
 
-export default Hamburger
+export default withRouter(Hamburger);

@@ -13,7 +13,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import Hamburger from "./hamburger.js";
 
@@ -82,8 +82,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+const Nav = props => {
   const classes = useStyles();
+  const { history } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -162,11 +163,9 @@ export default function PrimarySearchAppBar() {
           >
             <Hamburger />
           </IconButton>
-          <Link to='/'>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant="h6" noWrap onClick={() => history.push("/")}>
             LuvKie
           </Typography>
-          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -182,9 +181,9 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 0 new mails" color="inherit">
+            <IconButton color="inherit" onClick={() => history.push("/basket")}>
               <Badge badgeContent={0} color="secondary">
-                <Link to='/basket'><ShoppingCartIcon /></Link>
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton
@@ -216,3 +215,4 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+export default withRouter(Nav);
