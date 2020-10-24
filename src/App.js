@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 import Header from "./components/containers/Header";
 import Body from "./components/containers/Body";
